@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-
-const LoadingRouter = () => (
+export const LoadingRouter = () => (
     <Router>
     <div>
       <Switch>
@@ -10,4 +9,3 @@ const LoadingRouter = () => (
   </Router>
   )
 
-  export default LoadingRouter;

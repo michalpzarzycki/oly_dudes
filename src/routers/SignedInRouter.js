@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
-const SignedInRouter = () => (
+export const SignedInRouter = () => (
     <Router>
     <div>
       <Switch>
@@ -10,4 +10,3 @@ const SignedInRouter = () => (
   </Router>
   )
 
-  export default SignedInRouter;

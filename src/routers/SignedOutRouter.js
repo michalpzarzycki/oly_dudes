@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Register from '../components/Register';
 
-const SignedOutRouter = () => (
+export const SignedOutRouter = () => (
     <Router>
     <div>
       <Switch>
-        <Route />
+        <Route path="/" component={Register}/>
       </Switch>
     </div>
   </Router>
   )
 
-  export default SignedOutRouter;
