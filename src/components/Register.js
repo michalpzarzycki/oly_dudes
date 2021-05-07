@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,9 +12,22 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import styles from './Register.module.css'
-
+import { signUpUserWithEmailAndPassword } from '../firebase/auth'
 export default function Register() {
-
+const [user, setUser] = useState({})
+function handleChange(event) {
+    setUser({...user, [event.target.name]: event.target.value})
+}
+async function handleSubmit(e) {
+    e.preventDefault();
+    const {email, password} = user;
+    try{
+        let user = await signUpUserWithEmailAndPassword(email, password);
+        console.log("USER", user)
+    }  catch(err) {
+        console.log("ERROR", err)
+    }
+}
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -24,7 +38,7 @@ export default function Register() {
         <Typography component="h1" variant="h5" className={styles.header}>
           Sign up
         </Typography>
-        <form className={styles.form} noValidate>
+        <form className={styles.form} noValidate onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -36,6 +50,7 @@ export default function Register() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -47,6 +62,7 @@ export default function Register() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -58,6 +74,7 @@ export default function Register() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -70,6 +87,7 @@ export default function Register() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
