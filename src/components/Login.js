@@ -13,11 +13,13 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { signInWithEmailAndPassword } from '../firebase/auth'
-
+import { useDispatch } from 'react-redux'
+import { signInSuccess, signInRequest, singInFailure } from '../actions'
 
 export default function Login() {
     const classes = useStyles();
     const [user, setUser] = useState({});
+    const dispatch = useDispatch()
     function handleChange(e) {
         setUser({...user, [e.target.name]: e.target.value})
 
@@ -25,11 +27,13 @@ export default function Login() {
     async function handleSubmit(e) {
         e.preventDefault();
         console.log(user)
+        dispatch(signInRequest())
         try {
             let _user = await signInWithEmailAndPassword(user.email, user.password)
-            console.log("USER",_user)
+            dispatch(signInSuccess(_user))
         }catch(err){
             console.log(err)
+            dispatch(singInFailure(err))
         }
       
     }
