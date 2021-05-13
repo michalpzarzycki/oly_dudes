@@ -17,3 +17,17 @@ export function signUpUserWithEmailAndPassword(email, password) {
     })
 }
 
+export function signInWithEmailAndPassword(email, password) {
+    return new Promise((resolve, reject) => {
+      firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+          console.log(result)
+        resolve(result)
+      })
+      .catch((err) => {
+        reject(err)
+      })
+    })
+  }
