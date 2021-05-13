@@ -12,7 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { signInWithEmailAndPassword } from '../firebase/auth'
 
 
 export default function Login() {
@@ -22,9 +22,16 @@ export default function Login() {
         setUser({...user, [e.target.name]: e.target.value})
 
     }
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         console.log(user)
+        try {
+            let _user = await signInWithEmailAndPassword(user.email, user.password)
+            console.log("USER",_user)
+        }catch(err){
+            console.log(err)
+        }
+      
     }
     return (
         <Grid container component="main" className={classes.root}>
