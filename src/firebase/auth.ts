@@ -1,7 +1,7 @@
 import firebase from './index';
 
 
-export function signUpUserWithEmailAndPassword(email, password) {
+export function signUpUserWithEmailAndPassword(email: string, password: string) {
     return new Promise((resolve, reject) => {
         firebase
             .auth()
@@ -17,7 +17,7 @@ export function signUpUserWithEmailAndPassword(email, password) {
     })
 }
 
-export function signInWithEmailAndPassword(email, password) {
+export function signInWithEmailAndPassword(email: string, password: string) {
     return new Promise((resolve, reject) => {
       firebase
       .auth()
