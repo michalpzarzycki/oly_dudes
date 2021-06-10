@@ -16,20 +16,21 @@ import { signInWithEmailAndPassword } from '../firebase/auth'
 import { useDispatch } from 'react-redux'
 import { signInSuccess, signInRequest, singInFailure } from '../actions'
 
-export default function Login() {
+export default function Login(): JSX.Element {
     const classes = useStyles();
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState({email: '', password: ''});
     const dispatch = useDispatch()
-    function handleChange(e) {
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         setUser({...user, [e.target.name]: e.target.value})
 
     }
-    async function handleSubmit(e) {
+    async function handleSubmit(e:  React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
         console.log(user)
+        const { email, password } = user;
         dispatch(signInRequest())
         try {
-            let _user = await signInWithEmailAndPassword(user.email, user.password)
+            let _user = await signInWithEmailAndPassword(email, password)
             dispatch(signInSuccess(_user))
         }catch(err){
             console.log(err)
