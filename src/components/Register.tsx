@@ -13,12 +13,12 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import styles from './Register.module.css'
 import { signUpUserWithEmailAndPassword } from '../firebase/auth'
-export default function Register() {
-const [user, setUser] = useState({})
-function handleChange(event) {
+export default function Register(): JSX.Element {
+const [user, setUser] = useState({email: '', password: ''})
+function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
     setUser({...user, [event.target.name]: event.target.value})
 }
-async function handleSubmit(e) {
+async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     const {email, password} = user;
     try{
@@ -32,7 +32,7 @@ async function handleSubmit(e) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={styles.paper}>
-        <Avatar className={styles.avatar} co>
+        <Avatar className={styles.avatar} >
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5" className={styles.header}>

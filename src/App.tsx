@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
 import {LoadingRouter, SignedOutRouter, SignedInRouter} from './routers'
-import { useSelector } from 'react-redux'
+import { useSelector, RootStateOrAny } from 'react-redux'
 import './App.css';
 
-function App() {
+function App(): JSX.Element {
 
   //signedIn, signedOut, loading
-  let loginStatus = useSelector(state => state.user.loginStatus)
+  let loginStatus = useSelector((state: RootStateOrAny) => state.user.loginStatus)
   
   return (
     <div className="App">
