@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {Title} from './Title';
 
-function preventDefault(event) {
+function preventDefault(event: any): void {
   event.preventDefault();
 }
 
@@ -14,7 +14,11 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Deposits() {
+interface DepositsProps {
+
+}
+
+export const Deposits: React.FC<DepositsProps> = ({}) => {
   const classes = useStyles();
   return (
     <React.Fragment>
