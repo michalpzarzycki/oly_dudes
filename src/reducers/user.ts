@@ -1,9 +1,12 @@
+interface LoginStatus {
+    loginStatus: string
+}
 const initialState = {
   loginStatus: 'signedOut'
 }
 
 
-const user = (state = initialState, action) => {
+const user = (state: LoginStatus = initialState, action: any) => {
     console.log("ACTION")
     console.log(action.type, action.payload)
     switch (action.type) {

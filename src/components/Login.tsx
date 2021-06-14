@@ -16,9 +16,9 @@ import { signInWithEmailAndPassword } from '../firebase/auth'
 import { useDispatch } from 'react-redux'
 import { signInSuccess, signInRequest, singInFailure } from '../actions'
 
-export default function Login(): JSX.Element {
+export default function Login() {
     const classes = useStyles();
-    const [user, setUser] = useState({email: '', password: ''});
+    const [user, setUser] = useState<{email: string; password: string}>({email: '', password: ''});
     const dispatch = useDispatch()
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         setUser({...user, [e.target.name]: e.target.value})

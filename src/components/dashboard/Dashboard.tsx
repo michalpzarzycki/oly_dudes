@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -19,11 +19,13 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
-import Chart from './Chart';
-import Deposits from './Deposits';
-import Orders from './Orders';
+import {Chart} from './Chart';
+import {Deposits} from './Deposits';
+import {Orders} from './Orders';
+interface CopyrightProps {
 
-function Copyright() {
+}
+const Copyright: React.FC<CopyrightProps> = ({}) => {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -36,7 +38,7 @@ function Copyright() {
   );
 }
 
-const drawerWidth = 240;
+const drawerWidth: number = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -117,16 +119,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard() {
+interface DashboardProps {
+
+}
+
+export const Dashboard: React.FC<DashboardProps> = ({}) => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState<boolean>(true);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const fixedHeightPaper: string = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>

@@ -6,14 +6,22 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Title from './Title';
+import {Title} from './Title';
 
+interface ICreateData {
+  id: number;
+  date: string;
+  name: string;
+  shipTo: string;
+  paymentMethod: string;
+  amount: number;
+}
 // Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
+function createData(id: number, date: string, name: string, shipTo: string, paymentMethod: string, amount: number): ICreateData {
   return { id, date, name, shipTo, paymentMethod, amount };
 }
 
-const rows = [
+const rows: ICreateData[] = [
   createData(0, '16 Mar, 2019', 'Elvis Presley', 'Tupelo, MS', 'VISA ⠀•••• 3719', 312.44),
   createData(1, '16 Mar, 2019', 'Paul McCartney', 'London, UK', 'VISA ⠀•••• 2574', 866.99),
   createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
@@ -21,7 +29,7 @@ const rows = [
   createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919', 212.79),
 ];
 
-function preventDefault(event) {
+function preventDefault(event: any): void {
   event.preventDefault();
 }
 
@@ -31,7 +39,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Orders() {
+interface OrdersProps {
+
+}
+
+export const Orders: React.FC<OrdersProps> = ({}) => {
   const classes = useStyles();
   return (
     <React.Fragment>
