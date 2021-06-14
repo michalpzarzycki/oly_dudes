@@ -1,4 +1,4 @@
-import React from 'react';
+
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -10,7 +10,7 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 
-export const mainListItems = (
+export const mainListItems: JSX.Element = (
   <div>
     <ListItem button>
       <ListItemIcon>
@@ -45,7 +45,7 @@ export const mainListItems = (
   </div>
 );
 
-export const secondaryListItems = (
+export const secondaryListItems: JSX.Element = (
   <div>
     <ListSubheader inset>Saved reports</ListSubheader>
     <ListItem button>
