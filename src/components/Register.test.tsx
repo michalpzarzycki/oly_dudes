@@ -1,4 +1,4 @@
-import Register from './Register';
+import {Register} from './Register';
 import renderer from 'react-test-renderer';
 
 it('render correctly Register component', () => {  

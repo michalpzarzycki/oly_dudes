@@ -1,16 +1,18 @@
+
+
 export const signInRequest = () => ({
     type: 'SIGN_IN_REQUEST',
   
   })
 
-export const signInSuccess = (user) => ({
+export const signInSuccess = (user: any) => ({
     type: 'SIGN_IN_SUCCESS',
     payload: {
         data: user,
     }
 })
 
-export const singInFailure = (error) => ({
+export const singInFailure = (error: any) => ({
     type: 'SIGN_IN_FAILURE',
     payload: {
         error
@@ -21,14 +23,14 @@ export const signUpRequest = () => ({
  
   })
 
-export const signUpSuccess = (user) => ({
+export const signUpSuccess = (user: any) => ({
     type: 'SIGN_UP_SUCCESS',
     payload: {
         data: user,
     }
 })
 
-export const singUpFailure = (error) => ({
+export const singUpFailure = (error: any) => ({
     type: 'SIGN_UP_FAILURE',
     payload: {
         error
