@@ -2,13 +2,16 @@ import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import {Title} from './Title';
-
+interface ICreateData {
+  time: string;
+  amount: number | undefined
+}
 // Generate Sales Data
-function createData(time, amount) {
+function createData(time: string, amount: number| undefined): ICreateData {
   return { time, amount };
 }
 
-const data = [
+const data: ICreateData[] = [
   createData('00:00', 0),
   createData('03:00', 300),
   createData('06:00', 600),
@@ -20,7 +23,13 @@ const data = [
   createData('24:00', undefined),
 ];
 
-export default function Chart() {
+
+
+interface ChartProps {
+
+}
+
+export const Chart: React.FC<ChartProps> = ({}) => {
   const theme = useTheme();
 
   return (
@@ -52,3 +61,4 @@ export default function Chart() {
     </React.Fragment>
   );
 }
+
